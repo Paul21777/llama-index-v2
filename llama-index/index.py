@@ -4,7 +4,7 @@ import os, streamlit as st
 # os.environ['OPENAI_API_KEY']= ""
 
 from llama_index import GPTSimpleVectorIndex, SimpleDirectoryReader, LLMPredictor, PromptHelper, ServiceContext
-from langchain.llms.openai import OpenAI
+from langchain.llms import OpenAI
 
 # Define a simple Streamlit app
 st.title("Ask Llama")
@@ -17,7 +17,7 @@ if st.button("Submit"):
     else:
         try:
             # This example uses text-davinci-003 by default; feel free to change if desired
-            llm_predictor = LLMPredictor(llm=OpenAI(temperature=0, model_name="text-davinci-003"))
+            llm_predictor = LLMPredictor(llm=OpenAI(temperature=0, model_name=os.getenv("LLM_MODEL")))
 
             # Configure prompt parameters and initialise helper
             max_input_size = 4096
