@@ -18,8 +18,8 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/Paul21777/llama-index-v2.git .
-
+ADD "https://api.github.com/repos/Paul21777/llama-index-v2/commits?per_page=1" latest_commit
+RUN curl -sLO "https://github.com/Paul21777/llama-index-v2/archive/main.zip" && unzip main.zip
 
 RUN python -m pip install -r llama-index/requirements.txt
 
