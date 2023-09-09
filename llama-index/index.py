@@ -4,7 +4,7 @@ import os, streamlit as st
 # os.environ['OPENAI_API_KEY']= ""
 
 from llama_index import GPTSimpleVectorIndex, SimpleDirectoryReader, LLMPredictor, PromptHelper, ServiceContext
-from langchain.llms import OpenAI
+from langchain.llms.openai import OpenAI
 
 # Define a simple Streamlit app
 st.title("Ask Llama")
