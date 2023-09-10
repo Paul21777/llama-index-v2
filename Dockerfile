@@ -18,8 +18,8 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-ADD "https://api.github.com/repos/Paul21777/llama-index-v2/commits?per_page=1" latest_commit
-RUN curl -sLO "https://github.com/Paul21777/llama-index-v2/archive/main.zip" && unzip main.zip
+RUN git clone https://github.com/Paul21777/llama-index-v2.git .
+
 
 RUN python -m pip install -r llama-index/requirements.txt
 
@@ -31,4 +31,4 @@ USER appuser
 EXPOSE 8501
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-CMD ["python", "-m", "streamlit", "run", "llama-index/index.py"]
+CMD ["python", "-m", "streamlit", "run", "index.py"]
